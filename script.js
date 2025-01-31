@@ -38,7 +38,7 @@ function checkGuess(playerGuess, correctNum) {
     }
 }
 
-//e) Write a function called game that implements the main game logic:
+
 function game() {
    const correctNum = generateRandomNumber();
    let attempts = 0; 
