@@ -39,8 +39,7 @@ function checkGuess(playerGuess, correctNum) {
 }
 
 //e) Write a function called game that implements the main game logic:
-
-function game( ) {
+function game() {
    const correctNum = generateRandomNumber();
    let attempts = 0; 
    //console.log(`No, the correct answer is ${correctNum}`)
@@ -74,9 +73,9 @@ function game( ) {
             return console.log(`🌞 Your final score is ${Math.round(score)} 🙌`);
 
         } else if(result === "Too low") {
-                console.log(`Mh no 🙂‍↔️ ${playerNum} is too low`)
+                console.log(`Mh no 🙂‍↔️ no ${playerNum} is too low`)
         } else {
-            console.log(`No,🙂‍↔️ ${playerNum} is too high`)
+            console.log(`No,🙂‍↔️ no ${playerNum} is too high`)
         
         }
 
