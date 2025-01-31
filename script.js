@@ -1,18 +1,11 @@
-//a) Create a blank HTML document with a script tag (Hint: it is best practice 
-//  to link an external .js file). This game is going to be played completely from the 
-//  console, so don’t worry about putting anything else in there.
 
-//  b) Create a function called generateRandomNumber that returns a random 
-//  integer between 1 and 100. This will be the number the player has to guess.
- function generateRandomNumber() {
+
+function generateRandomNumber() {
     return Math.floor(Math.random() * 100) + 1;
 
 }
 
 
-//c) Write a function called getPlayerGuess that prompts the user to enter a 
-//  guess and returns the player's input as an integer. Ensure the function handles 
-//  invalid input and reprompts the user until they provide a valid number.
 function getPlayerGuess() {
     while(true) {
 
@@ -31,9 +24,7 @@ function getPlayerGuess() {
     }
   
 }
-//  d) Write a function called checkGuess that takes two parameters - the 
-//  player's guess and the correct number. It should return a string indicating whether
-//  the guess is too low, too high, or correct.
+
 function checkGuess(playerGuess, correctNum) {
 
     if(playerGuess < correctNum) {
@@ -48,18 +39,14 @@ function checkGuess(playerGuess, correctNum) {
 }
 
 //e) Write a function called game that implements the main game logic:
-//  • Generate the random number.
-//  • Initialize a counter for the number of attempts.
-//  • Use a loop to repeatedly prompt the player for guesses until they 
-//  guess correctly or use up a maximum of 10 attempts.
-//  • Print a message indicating whether the player has won or lost after 
-//  the game ends.
-//  • Print the number of attempts the player used.
+
 function game( ) {
    const correctNum = generateRandomNumber();
+   let attempts = 0; 
    //console.log(`No, the correct answer is ${correctNum}`)
 
    //Bonus start the timer
+    const startTime = Date.now();
 
     //initiate attempts
     for(let attempts= 1; attempts <= 10; attempts++) {
@@ -76,8 +63,15 @@ function game( ) {
 
         // VALIDATE RESULT
         if(result === "You guessed right!") {
-                console.log(`🥳Great guess ${playerNum} is the correct number🎉`);
-                return
+
+            const endTime = Date.now();
+            const elapsedTime = Math.round((endTime - startTime) / 1000); 
+            let score = 100 - (attempts * 5) - elapsedTime;
+            Math.round(score)
+
+            console.log(`🥳 You legend! ${playerNum} is the correct number🎉`);
+            console.log(`🌞 You used ${attempts} attempts and it took ${elapsedTime} second!`);
+            return console.log(`🌞 Your final score is ${Math.round(score)} 🙌`);
 
         } else if(result === "Too low") {
                 console.log(`Mh no 🙂‍↔️ ${playerNum} is too low`)
@@ -89,7 +83,7 @@ function game( ) {
         // END AFTER 10 TRIES
         if(attempts === 10) {
             console.log("You have used all your attempts 🙈");
-            return console.log("GAME OVER");
+            return console.log("GAME OVER 😵");
         }
     }
    
@@ -98,5 +92,3 @@ function game( ) {
     
 game();
 
-//Bonus Challenge: Implement a scoring system that rewards the player with 
-//  points based on how quickly they guess the correct number.
