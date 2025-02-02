@@ -9,7 +9,7 @@ function generateRandomNumber() {
 function getPlayerGuess() {
     while(true) {
 
-        let playerInput = prompt("Guess a number between 1 and 100");
+        let playerInput = prompt("😈 Guess a number between 1 and 100");
 
         if(playerInput === null) {
             return playerInput
@@ -18,7 +18,7 @@ function getPlayerGuess() {
         if((playerInput >= 1 ) && (playerInput <= 100)) {
             return playerInput = Number(playerInput);
         } else  {
-            console.log("Please guess a number between 1 and 100");
+            console.log("😈 Please guess a number between 1 and 100");
             continue;
         }
     }
@@ -40,14 +40,19 @@ function checkGuess(playerGuess, correctNum) {
 
 
 function game() {
+    alert("Hello?! Can you see me!")
+    alert("HINT: Open the Developer Tools with F12 and click the console tab.\nHINT: Might need to refresh the page!")
+    alert("Finally you're here! I've lost my number, can you help me find it?!")
+
    const correctNum = generateRandomNumber();
+
    let attempts = 0; 
    //console.log(`No, the correct answer is ${correctNum}`)
 
-   //Bonus start the timer
+   
     const startTime = Date.now();
 
-    //initiate attempts
+    
     for(let attempts= 1; attempts <= 10; attempts++) {
 
        let playerNum = getPlayerGuess();
@@ -56,11 +61,10 @@ function game() {
         return playerNum
         }
 
-        // THIS IS THE RESULT OF THE ROUND
+        
         let result = checkGuess(playerNum,  correctNum);
 
 
-        // VALIDATE RESULT
         if(result === "You guessed right!") {
 
             const endTime = Date.now();
@@ -79,7 +83,7 @@ function game() {
         
         }
 
-        // END AFTER 10 TRIES
+        
         if(attempts === 10) {
             console.log("You have used all your attempts 🙈");
             return console.log("GAME OVER 😵");
